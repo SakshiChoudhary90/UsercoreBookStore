@@ -54,7 +54,7 @@ namespace OnlineBookStoreUser.Controllers
                     HttpContext.Session.SetString("uname", cust.UserName);
                     //return RedirectToAction("Details", "Customers", new { @id = custId });
                     //return RedirectToAction("CheckOut", "Cart", new { @id = custId });
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Profile", "Customers", new { @id = custId });
                 }
                 else
                 {
@@ -63,16 +63,26 @@ namespace OnlineBookStoreUser.Controllers
                 }
 
             }
-
-            
+                 
 
         }
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Remove("uname");
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult Details(int id)
         {
             Customers cust = context.Customers.Where(x => x.CustomerId == id).SingleOrDefault();
             //Books bk = context.Books.Where(x => x.BookId == id).SingleOrDefault();
             context.SaveChanges();
             return View(cust);
+        }
+
+        public ActionResult Profile()
+        {
+            return View();
         }
     }
 }
