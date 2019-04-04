@@ -1,0 +1,48 @@
+﻿@model coreBookStore.Models.Author
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Details</h2>
+<br />
+@*@Html.DisplayNameFor(model => model.AuthorId)
+    @Html.DisplayFor(model => model.AuthorId)
+
+    <br />
+
+    @Html.DisplayNameFor(model => model.AuthorName)
+    @Html.DisplayFor(model => model.AuthorName)
+
+    <br />
+
+
+    @Html.DisplayNameFor(model => model.AuthorDescription)
+    @Html.DisplayFor(model => model.AuthorDescription)
+
+    <br />*@
+
+
+@*@Html.DisplayNameFor(model => model.AuthorImage)
+    @Html.DisplayFor(model => model.AuthorImage)
+
+    <br />*@
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="~/images/img.png" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(model => model.AuthorName)</h5>
+                <p class="card-text">@Html.DisplayFor(model => model.AuthorDescription)</p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<a asp-action="Index" asp-controller="Author" class="btn btn-primary">Back To List</a>

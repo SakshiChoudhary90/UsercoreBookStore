@@ -1,0 +1,48 @@
+﻿@model OnlineBookStoreUser.Models.Customers
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    body {
+        background-image: url(http://userscontent2.emaze.com/images/30c50827-20df-4d65-ad4f-1ea655b95376/635322512384260482_635211008685078919_notebook-diaries-pen-photo-hd-wallpaper.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .content {
+        /*background: hsla(327, 100%, 3%, 0.57);*/
+        width: 90%;
+        padding: 40px;
+        margin: 100px auto;
+
+    }
+
+    p {
+        font-size: 25px;
+        color: darkblue;
+    }
+   
+</style>
+<p>@ViewBag.Error</p>
+<center>
+<form class="form-signin" method="post" align="center" asp-controller="Customers" asp-action="login">
+    <center>
+        <h1 class="h3 mb-4 font-weight-normal" style="color:black;"><b>Please sign in</b></h1>
+
+        <div class="col-4 mb-3">
+            <label asp-for="UserName" class="sr-only">UserName</label>
+            <input type="text" asp-for="UserName" class="form-control" placeholder="Enter User Name">
+        </div>
+
+        <div class="col-4 mb-3">
+            <label asp-for="Password" class="sr-only">Password</label>
+            <input type="password" asp-for="Password" class="form-control" placeholder="Enter Password">
+        </div>
+        <div class="col-4 mb-3">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <a asp-controller="Customers" asp-action="Register" class="btn btn-lg btn-primary btn-block">Register</a>
+        </div>
+    </center>   
+</form>
+   </center>

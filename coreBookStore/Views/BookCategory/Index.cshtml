@@ -1,0 +1,49 @@
+﻿@model IEnumerable<coreBookStore.Models.BookCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+
+<h2><center><b><u>List Of Book Categories</u></b></center></h2>
+<br />
+
+<a asp-action="Create" asp-controller="BookCategory" class="btn btn-success">Add Book Category</a>
+<br />
+<br />
+<table class="table table-striped">
+
+
+    <thead>
+        <tr>
+            <th><label for="BookCategoryId">Category Id</label></th>
+            <th><label for="BookCategoryName">Category Name</label></th>
+            <th><label for="Actions">Actions</label></th>
+            
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.BookCategoryId)</td>
+                <td> @Html.DisplayFor(modelItem => item.BookCategoryName)</td>
+
+
+
+                <td>
+
+                    <a asp-controller="BookCategory" asp-action="Edit" asp-route-id="@item.BookCategoryId" class="btn btn-info">Edit</a> |
+                    <a asp-controller="BookCategory" asp-action="Details" asp-route-id="@item.BookCategoryId" class="btn btn-primary">Details</a> |
+                    <a asp-controller="BookCategory" asp-action="Delete" asp-route-id="@item.BookCategoryId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

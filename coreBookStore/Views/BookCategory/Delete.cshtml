@@ -1,0 +1,26 @@
+﻿@model coreBookStore.Models.BookCategory
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Are you sure, you want to delete it?</h2>
+<br />
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><b>@Html.DisplayFor(model => model.BookCategoryName)</b></h5>
+        <br />
+        <p class="card-text">@Html.DisplayFor(model => model.BookCategoryDescription)</p>
+        <br />
+        <a asp-controller="BookCategory" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </div>
+</div>
+@using (Html.BeginForm("Delete", "BookCategory", FormMethod.Post))
+{
+    <p>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-controller="BookCategory" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </p>
+}

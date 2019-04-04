@@ -1,0 +1,41 @@
+﻿@model coreBookStore.Models.Publication
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Details</h2>
+<br />
+
+
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><b>@Html.DisplayFor(model => model.PublicationName)</b></h5>
+        <br />
+        <p class="card-text">@Html.DisplayFor(model => model.PublicationDescription)</p>
+        <br />
+        <a asp-controller="Publication" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </div>
+</div>
+<br />
+
+
+@*<div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="~/images/img.png" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><b>@Html.DisplayFor(model => model.PublicationName)</b></h5>
+                    <p class="card-text">@Html.DisplayFor(model => model.PublicationDescription)</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a asp-controller="Publication" asp-action="Index" class="btn btn-primary">Back To List</a>*@

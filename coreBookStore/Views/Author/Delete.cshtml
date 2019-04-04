@@ -1,0 +1,33 @@
+﻿@model coreBookStore.Models.Author
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Are you sure, you want to delete it?</h2>
+<br />
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="~/images/img.png" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(model => model.AuthorName)</h5>
+                <p class="card-text">@Html.DisplayFor(model => model.AuthorDescription)</p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("Delete", "Author", FormMethod.Post))
+{
+    <p>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-controller="Author" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </p>
+}

@@ -1,0 +1,47 @@
+﻿@model coreBookStore.Models.Publication
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+@*<form asp-action="Delete" asp-controller="Publication">
+
+        <label asp-for="PublicationId"></label>
+        <input type="text" asp-for="PublicationId" />
+        <br />
+
+        <label asp-for="PublicationName"></label>
+        <input type="text" asp-for="PublicationName" />
+        <br />
+
+        <label asp-for="PublicationDescription"></label>
+        <input type="text" asp-for="PublicationDescription" />
+        <br />
+
+
+
+        <input type="submit" value="Save" class="btn btn-primary" />
+
+    </form>*@
+
+<h2>Are you sure, you want to delete it?</h2>
+<br />
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title"><b>@Html.DisplayFor(model => model.PublicationName)</b></h5>
+        <br />
+        <p class="card-text">@Html.DisplayFor(model => model.PublicationDescription)</p>
+        <br />
+        <a asp-controller="Publication" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </div>
+</div>
+@using (Html.BeginForm("Delete", "Publication", FormMethod.Post))
+{
+    <p>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-controller="Publication" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </p>
+}

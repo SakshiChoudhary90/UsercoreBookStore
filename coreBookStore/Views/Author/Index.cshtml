@@ -1,0 +1,47 @@
+﻿@model IEnumerable<coreBookStore.Models.Author>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<br />
+<br />
+
+<h2><center><b><u>List Of Authors</u></b></center></h2>
+<br />
+
+<a asp-controller="Author" asp-action="Create" class="btn btn-success">Add Author</a>
+<br />
+<br />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th><label for="AuthorId">Author's Id</label></th>
+            <th><label for="AuthorName">Author's Name</label></th>
+            <th><label for="Actions">Actions</label></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.AuthorId)</td>
+                <td> @Html.DisplayFor(modelItem => item.AuthorName)</td>
+                @*<td> @Html.DisplayFor(modelItem => item.AuthorDescription)</td>
+                    <td> @Html.DisplayFor(modelItem => item.AuthorImage)</td>*@
+
+
+                <td>
+
+                    <a asp-controller="Author" asp-action="Edit" asp-route-id="@item.AuthorId" class="btn btn-info">Edit</a> |
+                    <a asp-controller="Author" asp-action="Details" asp-route-id="@item.AuthorId" class="btn btn-primary">Details</a> |
+                    <a asp-controller="Author" asp-action="Delete" asp-route-id="@item.AuthorId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

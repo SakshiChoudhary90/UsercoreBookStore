@@ -1,0 +1,58 @@
+﻿@model OnlineBookStoreUser.Models.Books
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    body {
+        background-image: url(https://www.britishcouncil.org/sites/default/files/janko-ferlic-174927_1920x1080.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        opacity: 0.8;
+    }
+
+    .content {
+        background: hsla(174, 67%, 14%, 0.14);
+        width: 90%;
+        padding: 40px;
+        margin: 100px auto;
+    }
+
+    p {
+        font-size: 25px;
+        color: darkblue;
+    }
+</style>
+
+
+<br />
+<br />
+<br />
+<h2 style="color:white;"><b>Details</b></h2>
+<br />
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="@Html.DisplayFor(model => model.BookImage)" class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><b>@Html.DisplayFor(model => model.BookName)</b></h5>
+                <h5 class="card-text">@Html.DisplayFor(model => model.BookDescription)</h5>
+                <h5 class="card-text">@Html.DisplayFor(model => model.BookPrice)</h5>
+                <h5 class="card-text">@Html.DisplayFor(model => model.BookType)</h5>
+
+
+
+                <a asp-controller="Cart" asp-action="Buy" id="demo" onclick="myFunction()" class="btn btn-sm btn-outline-secondary">Add To Cart</a>
+                <script>
+                    function myFunction() {
+                        document.getElementById("demo").style.color = "red";
+                    }
+                </script>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-outline-secondary">Back To Books</a>
+            </div>
+        </div>
+    </div>
+</div>
+

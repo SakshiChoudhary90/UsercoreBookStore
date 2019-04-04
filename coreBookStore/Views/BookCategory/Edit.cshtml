@@ -1,0 +1,53 @@
+﻿@model coreBookStore.Models.BookCategory
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2><center><b><u>Edit Book Category</u></b></center></h2>
+<br />
+@*<form asp-action="Edit" asp-controller="BookCategory">
+
+
+        <label asp-for="CategoryId"></label>
+        <input type="text" asp-for="CategoryId" />
+        <br />
+
+        <label asp-for="CategoryName"></label>
+        <input type="text" asp-for="CategoryName" />
+        <br />
+
+        <label asp-for="CategoryDescription"></label>
+        <input type="text" asp-for="CategoryDescription" />
+        <br />
+
+
+        <input type="submit" value="Save" class="btn btn-primary" />
+
+    </form>*@
+
+
+<form asp-action="Edit" asp-controller="BookCategory">
+
+    @Html.HiddenFor(model => Model.BookCategoryId)
+
+    <div class="form-group">
+        <label asp-for="BookCategoryName"><b>Category Name</b></label>
+        <input type="text" asp-for="BookCategoryName" class="form-control" placeholder="Enter Category Name">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BookCategoryDescription"><b>Category Description</b></label>
+        <input type="text" asp-for="BookCategoryDescription" class="form-control" placeholder="Enter Category Description">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BookCategoryImage"><b>Category Image</b></label>
+        <input type="text" asp-for="BookCategoryImage" class="form-control" placeholder="Enter Category Image">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="BookCategory" asp-action="Index" class="btn btn-primary">Back To List</a>
+</form>

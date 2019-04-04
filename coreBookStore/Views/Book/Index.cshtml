@@ -1,0 +1,44 @@
+﻿@model IEnumerable<coreBookStore.Models.Book>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<h2><center><b><u>List Of Books</u></b></center></h2>
+<br />
+<a asp-action="Create" asp-controller="Book" class="btn btn-success">Add Books</a>
+<br />
+<br />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th><label for="BookId">Book Id</label></th>
+            <th><label for="BookName">Book Name</label></th>
+            <th><label for="Actions">Actions</label></th>
+            
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> @Html.DisplayFor(modelItem => item.BookId)</td>
+                <td> @Html.DisplayFor(modelItem => item.BookName)</td>
+
+
+                <td>
+
+                    <a asp-controller="Book" asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-info">Edit</a> |
+                    <a asp-controller="Book" asp-action="Details" asp-route-id="@item.BookId" class="btn btn-primary">Details</a> |
+                    <a asp-controller="Book" asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
