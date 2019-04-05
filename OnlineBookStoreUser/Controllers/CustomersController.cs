@@ -104,10 +104,23 @@ namespace OnlineBookStoreUser.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public ActionResult ChangePassword()
         {
-            return View();
+            int custId = int.Parse(HttpContext.Session.GetString("cID"));
+            Customers cust = context.Customers.Where(x => x.CustomerId == custId).SingleOrDefault();
+
+            return View(cust);
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(int id, Customers d1)
+        {
+            int custId = int.Parse(HttpContext.Session.GetString("cID"));
+            Customers cust = context.Customers.Where(x => x.CustomerId == custId).SingleOrDefault();
+            cust.Password = d1.Password;
+            context.SaveChanges();
+
+            return RedirectToAction("Profile", new { @id = custId });
         }
         [HttpGet]
         public ActionResult Edit()
@@ -130,5 +143,6 @@ namespace OnlineBookStoreUser.Controllers
 
     }
 }
+
 
 

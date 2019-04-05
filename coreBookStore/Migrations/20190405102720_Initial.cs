@@ -49,6 +49,7 @@ namespace coreBookStore.Migrations
                     UserName = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
+                    OldPassword = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
                     City = table.Column<string>(nullable: true),
@@ -111,6 +112,7 @@ namespace coreBookStore.Migrations
                     BookDescription = table.Column<string>(nullable: true),
                     BookPrice = table.Column<float>(nullable: false),
                     BookImage = table.Column<string>(nullable: true),
+                    BookPdf = table.Column<string>(nullable: true),
                     AuthorId = table.Column<int>(nullable: false),
                     BookCategoryId = table.Column<int>(nullable: false),
                     PublicationId = table.Column<int>(nullable: false)

@@ -16,6 +16,7 @@ namespace OnlineBookStoreUser.Models
         public string BookDescription { get; set; }
         public float BookPrice { get; set; }
         public string BookImage { get; set; }
+        public string BookPdf { get; set; }
         public int AuthorId { get; set; }
         public int BookCategoryId { get; set; }
         public int PublicationId { get; set; }

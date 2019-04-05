@@ -52,6 +52,8 @@ namespace coreBookStore.Migrations
 
                     b.Property<string>("BookName");
 
+                    b.Property<string>("BookPdf");
+
                     b.Property<float>("BookPrice");
 
                     b.Property<string>("BookType");
@@ -107,6 +109,8 @@ namespace coreBookStore.Migrations
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
+
+                    b.Property<string>("OldPassword");
 
                     b.Property<string>("Password");
 
