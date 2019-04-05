@@ -1,25 +1,29 @@
-﻿
+﻿@model OnlineBookStoreUser.Models.Customers
 @{
     ViewData["Title"] = "Profile";
-    Layout = "~/Views/Shared/_PartialLayout.cshtml";
+    Layout = "~/Views/Shared/_ProfileUserLayout.cshtml";
 }
 
-<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Profile</li>
-        <li class="list-group-item">Order</li>
-        <li class="list-group-item">Saved Address</li>
-        <li class="list-group-item">Cart</li>
-        <li class="list-group-item">Saved Address</li>
-    </ul>
-</div>
 
-@*<div class="card" style="width: 18rem;">
+
+<div class="card" align="justify" style="width: 800px;float:right">
+    <h3><img src="~/images/images.png" height="40" width="40" alt="..."> Personal Information</h3>
+    <br/>
+    <div class="card-body">
+        <h3 class="card-title"></h3>
+      </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item">Profile</li>
-        <li class="list-group-item">Order</li>
-        <li class="list-group-item">Saved Address</li>
-        <li class="list-group-item">Cart</li>
-        <li class="list-group-item">Saved Address</li>
+        <li class="list-group-item">Name : @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</li>
+        <li class="list-group-item">UserName : @Html.DisplayFor(model => model.UserName)</li>
+        @*<li class="list-group-item">Password :@Html.DisplayFor(model => model.Password)</li>*@
+        <li class="list-group-item">Email : @Html.DisplayFor(model => model.Email)</li>
+        @*<li class="list-group-item">Country : @Html.DisplayFor(model => model.Country)</li>
+        <li class="list-group-item">Address : @Html.DisplayFor(model => model.Address)</li>
+        <li class="list-group-item">City : @Html.DisplayFor(model => model.City)</li>
+        <li class="list-group-item">Zipcode : @Html.DisplayFor(model => model.ZipCode)</li>*@
+        <li class="list-group-item">Contact : @Html.DisplayFor(model => model.Contact)</li>
     </ul>
-</div>*@
+    <a asp-action="Edit" asp-controller="Customers">Edit Details</a>
+    </div>
+
+

@@ -1,0 +1,33 @@
+﻿@model OnlineBookStoreUser.Models.Customers
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_ProfileUserLayout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Customers", FormMethod.Post))
+{
+<div class="card" align="justify" style="width: 800px;float:right">
+    <h3><img src="~/images/images.png" height="40" width="40" alt="...">Edit Details</h3>
+    <br/>
+    <div class="card-body">
+        <h3 class="card-title"></h3>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">  @Html.HiddenFor(model => model.CustomerId) </li>
+        <li class="list-group-item">First Name :  @Html.EditorFor(model => model.FirstName) </li>
+        <li class="list-group-item">Last Name : @Html.EditorFor(model => model.LastName) </li>
+        <li class="list-group-item">UserName : @Html.EditorFor(model => model.UserName)</li>
+        <li class="list-group-item">Email : @Html.EditorFor(model => model.Email)</li>
+
+        @*<li class="list-group-item">Password :@Html.EditorFor(model => model.Password)</li>
+        <li class="list-group-item">Country :@Html.EditorFor(model => model.Country)</li>
+        <li class="list-group-item">Address : @Html.EditorFor(model => model.Address)</li>
+        <li class="list-group-item">City : @Html.EditorFor(model => model.City)</li>
+        <li class="list-group-item">Zipcode : @Html.EditorFor(model => model.ZipCode)</li>*@
+        <li class="list-group-item">Contact :@Html.EditorFor(model => model.Contact)</li>
+    </ul>
+    <input type="submit" value="Edit Details" />
+</div>
+             
+ }
+

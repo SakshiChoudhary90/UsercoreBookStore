@@ -51,7 +51,9 @@ namespace OnlineBookStoreUser.Controllers
                 //var obj = context.Customers.Where(a => a.UserName.Equals(cust.UserName) && a.Password.Equals(cust.Password)).FirstOrDefault();
                 if (user != null)
                 {
+
                     HttpContext.Session.SetString("uname", cust.UserName);
+                    HttpContext.Session.SetString("cID", custId.ToString());
                     //return RedirectToAction("Details", "Customers", new { @id = custId });
                     //return RedirectToAction("CheckOut", "Cart", new { @id = custId });
                     return RedirectToAction("Profile", "Customers", new { @id = custId });
@@ -80,9 +82,53 @@ namespace OnlineBookStoreUser.Controllers
             return View(cust);
         }
 
-        public ActionResult Profile()
+        public ActionResult Profile(int id)
+        {
+            Customers cust = context.Customers.Where(x => x.CustomerId == id).SingleOrDefault();
+
+            return View(cust);
+        }
+
+        public ActionResult Order(int id)
+        {
+
+            return View();
+        }
+
+        public ActionResult SavedAddress()
         {
             return View();
         }
+
+        public ActionResult Cart()
+        {
+            return View();
+        }
+
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            int custId = int.Parse(HttpContext.Session.GetString("cID"));
+            Customers cust = context.Customers.Where(x => x.CustomerId == custId).SingleOrDefault();
+
+            return View(cust);
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, Customers d1)
+        {
+            int custId = int.Parse(HttpContext.Session.GetString("cID"));
+            Customers cust = context.Customers.Where(x => x.CustomerId == custId).SingleOrDefault();
+            context.Entry(cust).CurrentValues.SetValues(d1);
+            context.SaveChanges();
+            
+            return RedirectToAction("Profile", new { @id = custId });
+        }
+
     }
 }
+
+
