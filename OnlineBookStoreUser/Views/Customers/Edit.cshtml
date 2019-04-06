@@ -1,33 +1,62 @@
 ﻿@model OnlineBookStoreUser.Models.Customers
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_ProfileUserLayout.cshtml";
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
 }
 
-@using (Html.BeginForm("Edit", "Customers", FormMethod.Post))
-{
-<div class="card" align="justify" style="width: 800px;float:right">
-    <h3><img src="~/images/images.png" height="40" width="40" alt="...">Edit Details</h3>
-    <br/>
-    <div class="card-body">
-        <h3 class="card-title"></h3>
+
+<!-- register -->
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card" style="width: 18rem;float:left">
+                <ul class="list-group list-group-flush">
+                    <h3>User Profile</h3>
+                    </br>
+                    <a asp-controller="Customers" asp-action="Profile" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Profile</b></a>
+                    <a asp-controller="Customers" asp-action="Order" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Order</b></a>
+                    <a asp-controller="Customers" asp-action="ResetAddress" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Reset Address</b></a>
+                    <a asp-controller="Customers" asp-action="Repository" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Purchased E-Book Repository</b></a>
+                    <a asp-controller="Cart" asp-action="Index" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Cart</b></a>
+                    <a asp-controller="Customers" asp-action="ResetPassword" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Change Password</b></a>
+                </ul>
+            </div>
+        </div>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">  @Html.HiddenFor(model => model.CustomerId) </li>
-        <li class="list-group-item">First Name :  @Html.EditorFor(model => model.FirstName) </li>
-        <li class="list-group-item">Last Name : @Html.EditorFor(model => model.LastName) </li>
-        <li class="list-group-item">UserName : @Html.EditorFor(model => model.UserName)</li>
-        <li class="list-group-item">Email : @Html.EditorFor(model => model.Email)</li>
 
-        @*<li class="list-group-item">Password :@Html.EditorFor(model => model.Password)</li>*@
-        <li class="list-group-item">Country :@Html.EditorFor(model => model.Country)</li>
-        <li class="list-group-item">Address : @Html.EditorFor(model => model.Address)</li>
-        <li class="list-group-item">City : @Html.EditorFor(model => model.City)</li>
-        <li class="list-group-item">Zipcode : @Html.EditorFor(model => model.ZipCode)</li>
-        <li class="list-group-item">Contact :@Html.EditorFor(model => model.Contact)</li>
-    </ul>
-    <input type="submit" value="Edit Details" />
+
+
+    <div class="col-md-8">
+        <div class="card mb-4 shadow-sm">
+            <div class="card" align="justify" style="width: 800px;float:right">
+                <h3><img src="~/images/images.png" height="40" width="40" alt="...">  Edit Details</h3>
+                <br />
+                <div class="card-body">
+                    <h3 class="card-title"></h3>
+                </div>
+
+                <form asp-controller="Customers" asp-action="Edit">
+                    <ul class="list-group list-group-flush">
+                        @Html.HiddenFor(model => model.CustomerId)
+                        @Html.HiddenFor(model => model.UserName)
+                        @Html.HiddenFor(model => model.OldPassword)
+                        @Html.HiddenFor(model => model.Password)
+                        @Html.HiddenFor(model => model.Address)
+                        @Html.HiddenFor(model => model.ZipCode)
+                        @Html.HiddenFor(model => model.ShippingAddress)
+                        <li class="list-group-item">First Name :  <input type="text" asp-for="FirstName" class="form-control" /></li>
+                        <li class="list-group-item">Last Name : <input type="text" asp-for="LastName" class="form-control" /></li>
+                        <li class="list-group-item">Email : <input type="text" asp-for="Email" class="form-control" /></li>
+                        <li class="list-group-item">Contact : <input type="text" asp-for="Contact" class="form-control" /></li>
+                    </ul>
+
+
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
+
+    </div>
+
 </div>
-             
- }
-

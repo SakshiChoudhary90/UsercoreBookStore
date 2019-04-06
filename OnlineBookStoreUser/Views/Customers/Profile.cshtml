@@ -1,29 +1,55 @@
 ﻿@model OnlineBookStoreUser.Models.Customers
 @{
     ViewData["Title"] = "Profile";
-    Layout = "~/Views/Shared/_ProfileUserLayout.cshtml";
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
 }
 
-
-
-<div class="card" align="justify" style="width: 800px;float:right">
-    <h3><img src="~/images/images.png" height="40" width="40" alt="..."> Personal Information</h3>
-    <br/>
-    <div class="card-body">
-        <h3 class="card-title"></h3>
-      </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Name : @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</li>
-        <li class="list-group-item">UserName : @Html.DisplayFor(model => model.UserName)</li>
-        @*<li class="list-group-item">Password :@Html.DisplayFor(model => model.Password)</li>*@
-        <li class="list-group-item">Email : @Html.DisplayFor(model => model.Email)</li>
-        <li class="list-group-item">Country : @Html.DisplayFor(model => model.Country)</li>
-        <li class="list-group-item">Address : @Html.DisplayFor(model => model.Address)</li>
-        <li class="list-group-item">City : @Html.DisplayFor(model => model.City)</li>
-        <li class="list-group-item">Zipcode : @Html.DisplayFor(model => model.ZipCode)</li>
-        <li class="list-group-item">Contact : @Html.DisplayFor(model => model.Contact)</li>
-    </ul>
-    <a asp-action="Edit" asp-controller="Customers">Edit Details</a>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card" style="width: 18rem;float:left">
+                <ul class="list-group list-group-flush">
+                    <h3>User Profile</h3>
+                    </br>
+                    <a asp-controller="Customers" asp-action="Profile" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Profile</b></a>
+                    <a asp-controller="Customers" asp-action="Order" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Order</b></a>
+                    <a asp-controller="Customers" asp-action="ResetAddress" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Reset Address</b></a>
+                    <a asp-controller="Customers" asp-action="Repository" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Purchased E-Book Repository</b></a>
+                    <a asp-controller="Cart" asp-action="Index" class="list-group-item"><b>Cart</b></a>
+                    <a asp-controller="Customers" asp-action="ResetPassword" class="list-group-item" asp-route-id="@Model.CustomerId"><b>Change Password</b></a>
+                </ul>
+            </div>
+        </div>
     </div>
 
 
+
+
+
+
+
+
+    <div class="col-md-8">
+        <div class="card mb-4 shadow-sm">
+            <div class="card" align="justify" style="width: 800px;float:right">
+                <h3><img src="~/images/images.png" height="40" width="40" alt="..."> Personal Information</h3>
+                <br />
+                <div class="card-body">
+                    <h3 class="card-title"></h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Name : @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</li>
+                    <li class="list-group-item">UserName : @Html.DisplayFor(model => model.UserName)</li>
+                    @*<li class="list-group-item">Password :@Html.DisplayFor(model => model.Password)</li>*@
+                    <li class="list-group-item">Email : @Html.DisplayFor(model => model.Email)</li>
+                    <li class="list-group-item">Country : @Html.DisplayFor(model => model.Country)</li>
+                    <li class="list-group-item">Address : @Html.DisplayFor(model => model.Address)</li>
+                    <li class="list-group-item">City : @Html.DisplayFor(model => model.City)</li>
+                    <li class="list-group-item">Zipcode : @Html.DisplayFor(model => model.ZipCode)</li>
+                    <li class="list-group-item">Contact : @Html.DisplayFor(model => model.Contact)</li>
+                </ul>
+                <a asp-action="Edit" asp-controller="Customers">Edit Details</a>
+            </div>
+        </div>
+    </div>
+</div>

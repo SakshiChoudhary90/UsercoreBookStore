@@ -1,0 +1,18 @@
+﻿@model IEnumerable<coreBookStore.Models.BookCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
+}
+<table class="table table-striped">
+
+
+         
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td> @Html.HiddenFor(modelItem => item.BookCategoryId)</td>
+                <td> @Html.DisplayFor(modelItem => item.BookCategoryName)</td>
+
+            </tr>
+        }
+        

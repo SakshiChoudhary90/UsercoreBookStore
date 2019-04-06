@@ -1,0 +1,54 @@
+﻿@model IEnumerable<OnlineBookStoreUser.Models.OrderBooks>
+@{
+    ViewData["Title"] = "Repository";
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                
+                    <li class="list-group-item"><a asp-controller="Customers" asp-action="ResetAddress">Reset Address</a></li>
+                    <li class="list-group-item"><a asp-controller="Customers" asp-action="Repository">Order</a></li>
+                    <li class="list-group-item"><a asp-controller="Customers" asp-action="Repository">Purchased E-Book Repository</a></li>
+                    <li class="list-group-item"><a asp-controller="Cart" asp-action="Index">Cart</a></li>
+                    <li class="list-group-item"><a asp-controller="Customers" asp-action="ResetPassword">Reset Password</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card mb-4 shadow-sm">
+
+            <li class="list-group-item">
+                <p> <center><h3><b>Basic Information</b></h3></center></p>
+            </li>
+            <div class="card-body">
+                <li class="list-group-item">
+                    <center>
+                        @foreach (var item in ViewBag.ob)
+                        {
+                            <h5 class="card-title">
+                                Book Name :  @item.Books.BookName
+                                <a class="btn btn-sm btn-outline-secondary">Download </a>
+                            </h5>
+                        }
+
+
+
+                    </center>
+                </li>
+                <li class="list-group-item">
+                    <p> <center><a asp-controller="Customers" asp-action="Edit" class="btn btn-sm btn-outline-secondary">Edit </a></center></p>
+                </li>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,56 +1,138 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
+
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
 }
 
 
-<center><h3 style="color:black;"><b> Cart Page</b></h3></center>
-<br />
-<b><table class="table table-hover" style="color:black;"></b>
+
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Checkout Page</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- checkout -->
+<div class="checkout">
+    <div class="container">
+        <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains: <span>@Context.Session.GetString("CartItem")</span></h3>
+        <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
+            <table class="timetable_sub">
+                <thead>
+                    <tr>
+
+                        <th>Book Image</th>
+                        <th>Quality</th>
+                        <th>Book Name</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+
+                    </tr>
+
+                </thead>
+                @foreach (var item in ViewBag.cart)
+                {
+                    <tr class="rem1">
+
+                        <td class="invert-image"><a href="single.html"><img src="@item.Books.BookImage" alt=" " class="img-responsive" /></a></td>
+                        @*<td class="invert">
+                                <div class="quantity">
+                                    <div class="quantity-select">
+                                        <div class="entry value-minus">&nbsp;</div>
+                                        <div class="entry value"><span>1</span></div>
+                                        <div class="entry value-plus active">&nbsp;</div>
+                                    </div>
+                                </div>
+                            </td>*@
+                        <td><b><a asp-controller="Cart" asp-action="Plus" asp-route-id="@item.Books.BookId" class=" btn btn-light"> + </a> @item.Quantity <a asp-controller="Cart" asp-action="Minus" asp-route-id=" @item.Books.BookId " class=" btn btn-light">-</a></b></td>
+                        <td class="invert">@item.Books.BookName</td>
+
+                        <td class="invert">@(item.Books.BookPrice * item.Quantity)</td>
+                        @*<td class="invert">
+                                        <div class="rem">
+                                            <div class="close1"> </div>
+                                        </div>
+                                        <script>
+                                $(document).ready(function (c) {
+                                    $('.close1').on('click', function (c) {
+                                        $('.rem1').fadeOut('slow', function (c) {
+                                            $('.rem1').remove();
+                                        });
+                                    });
+                                });
+                            </script>
+                                    </td>*@
+                        <td>
+                            <a asp-controller="Cart" asp-action="remove" asp-route-id="@item.Books.BookId" class="btn btn-light">Remove</a>
+                        </td>
+                    </tr>
+                }
 
 
-<tr>
-    <th>Option</th>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Photo</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Sub Total</th>
-</tr>
 
-@foreach (var item in ViewBag.cart)
-{
-    <tr style="color:black;">
+                <!--quantity-->
+                @*<script>
+                        $('.value-plus').on('click', function () {
+                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
+                            divUpd.text(newVal);
+                        });
 
-        <td><a asp-controller="Cart" asp-action="remove" asp-route-id="@item.Books.BookId" class="btn btn-light">Remove</a></td>
-        <td><b>@item.Books.BookId</b></td>
-        <td><b>@item.Books.BookName</b></td>
-        <td><img src="@item.Books.BookImage" width="60" /></td>
-        <td><b>@item.Books.BookPrice</b></td>
+                        $('.value-minus').on('click', function () {
+                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
+                            if (newVal >= 1) divUpd.text(newVal);
+                        });
+                    </script>*@
+                <!--quantity-->
+            </table>
+        </div>
+        <div class="checkout-left">
+            <div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
 
-        <td><b><a asp-controller="Cart" asp-action="Plus" asp-route-id="@item.Books.BookId" class=" btn btn-light"> + </a> @item.Quantity <a asp-controller="Cart" asp-action="Minus" asp-route-id=" @item.Books.BookId " class=" btn btn-light">-</a></b></td>
-
-        <td><b>@(item.Books.BookPrice * item.Quantity)</b></td>
-    </tr>
+                <ul>
 
 
+                    <li>Total <i>-</i> <span>@ViewBag.total</span></li>
+
+                </ul>
+                @if (Context.Session.GetString("id") != null)
+                {
+                    <a asp-controller="Customers" asp-action="Checkout" asp-route-id="@Context.Session.GetString("id")" class="btn btn-sm btn-outline-secondary">Checkout</a>
+                }
+                else
+                {
+                    <a asp-controller="Customers" asp-action="Login" class="btn btn-sm btn-outline-secondary">Checkout</a>
+                }
+
+            </div>
+            <div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
+                <a asp-controller="Home" asp-action="Index"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- //checkout -->
+@*@foreach (var item in ViewBag.cart)
+    {
+        <tr style="color:black;">
+
+            <td><a asp-controller="Cart" asp-action="remove" asp-route-id="@item.Books.BookId" class="btn btn-light">Remove</a></td>
+            <td><b>@item.Books.BookId</b></td>
+            <td><b>@item.Books.BookName</b></td>
+            <td><img src="@item.Books.BookImage" width="60" /></td>
+            <td><b>@item.Books.BookPrice</b></td>
+
+            <td><b><a asp-controller="Cart" asp-action="Plus" asp-route-id="@item.Books.BookId" class=" btn btn-light"> + </a> @item.Quantity <a asp-controller="Cart" asp-action="Minus" asp-route-id=" @item.Books.BookId " class=" btn btn-light">-</a></b></td>
+
+            <td><b>@(item.Books.BookPrice * item.Quantity)</b></td>
+        </tr>
 
 
-}
-
-<tr>
-    <td align="right" colspan="6"><b>Sum</b></td>
-    <td><b>@ViewBag.total</b></td>
-</tr>
-
-</table>
-<br />
-<a asp-controller="Home" asp-action="Index" class="btn btn-sm btn-outline-secondary">Continue Shopping</a>
-<a asp-controller="Customers" asp-action="Login" class="btn btn-sm btn-outline-secondary">Checkout</a>
 
 
-
-
-
+    }*@

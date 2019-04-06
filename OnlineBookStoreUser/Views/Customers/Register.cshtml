@@ -2,145 +2,58 @@
 
 @{
     ViewData["Title"] = "Register";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    Layout = "~/Views/Shared/_PartialLayout.cshtml";
 }
-<style type="text/css">
-    body {
-        background-image: url(https://images.unsplash.com/photo-1526376043067-5af36c35cd6c?ixlib=rb-1.2.1&w=1000&q=80);
-        background-size: cover;
-        background-attachment: fixed;
-    }
-
-    .content {
-        /*background: hsla(327, 100%, 3%, 0.57);*/
-        width: 90%;
-        padding: 40px;
-        margin: 100px auto;
-    }
-
-    p {
-        font-size: 25px;
-        color: darkblue;
-    }
-</style>
-
-
-
-    <hr />
-    <br />
-    <form asp-action="Register" asp-controller="Customers">
-        <div class="row">
-            <h4 class="col-12 mb-3">Basic Details</h4>
-            <div class="col-md-6 mb-3">
-
-                <label asp-for="FirstName"><b>First Name</b></label>
-                <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter First Name">
-
-            </div>
-            <div class="col-md-6 mb-3">
-                <label asp-for="LastName"><b>Last Name</b></label>
-                <input type="text" asp-for="LastName" class="form-control" placeholder="Enter Last Name">
-
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 mb-3">
-                <label asp-for="UserName"><b>User Name</b></label>
-                <input type="text" asp-for="UserName" class="form-control" placeholder="Enter User Name">
-            </div>
-            <div class="col-12 mb-3">
-                <label asp-for="Password"><b>Password</b></label>
-                <input type="text" asp-for="Password" class="form-control" placeholder="Enter Password">
-            </div>
-
-            <div class="col-12 mb-3">
-                <label asp-for="OldPassword"><b>Confirm Password</b></label>
-                <input type="text" asp-for="OldPassword" class="form-control" placeholder="Confirm Password">
-            </div>
-            <div class="col-12 mb-3">
-                <label asp-for="Email"><b>Email</b></label>
-                <input type="email" asp-for="Email" class="form-control" placeholder="Enter Email">
-            </div>
-        </div>
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Register Page</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+<div class="register">
+    <div class="container">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+            deserunt mollit anim id est laborum.
+        </p>
         
-        <div class="row">
-            <br />
-            <hr />
-            <h4 class="col-12 mb-3">Billing Address</h4>
-            <hr />
-            <br />
-            <div class="col-12 mb-3">
-                <label asp-for="Address"><b>Address</b></label>
-                <input type="text" asp-for="Address" class="form-control" placeholder="Enter Address">
-            </div>
+            <div class="login-form-grids">
+                <h5 class="animated wow slideInUp" data-wow-delay=".5s">Profile information</h5>
+                <form class="animated wow slideInUp" data-wow-delay=".5s" asp-action="Register" asp-controller="Customers">
+                    <input type="text" asp-for="FirstName" placeholder="First Name..." required=""/>
+                    <input type="text" asp-for="LastName" placeholder="Last Name..." required=""/>
+                    <input type="email" asp-for="Email" placeholder="Email..." required=""/>
+
+                    <br />  <br />
+                    <h5 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h5>
+
+                    <input type="text" asp-for="UserName" placeholder="User Name..." required=""/>
+                    <input type="password" asp-for="OldPassword" placeholder="Password..." required=""/>
+                    <input type="password" asp-for="Password" placeholder="Confirm Password..." required=""/>
+
+
+                    <h6 class="animated wow slideInUp" data-wow-delay=".5s">Address information</h6>
+
+                    <input type="text" asp-for="Address" placeholder="Address..." required=""/> <br />
+                    <input type="text" asp-for="ZipCode" placeholder="ZipCode..." required=""/> <br />
+                    <input type="text" asp-for="Contact" placeholder="Contact..." required=""/>
+                    <div class="register-check-box">
+                        <div class="check">
+                            <label asp-for="ShippingAddress" class="checkbox"><input type="checkbox" asp-for="ShippingAddress" name="checkbox"><i> </i>Shipping Address</label>
+                        </div>
+                    </div>
+                    <input type="submit" value="Register">
+                </form>
+        
+    </div>
+        <div class="register-home animated wow slideInUp" data-wow-delay=".5s">
+            <a asp-controller="Home" asp-action="Index">Home</a>
         </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="City"><b>State</b></label>
-                    <select asp-for="City" class="custom-select d-block w-100" id="state" required>
-                        <option value="">Choose...</option>
-                        <option>Delhi - India</option>
-                        <option>Maharastra - India</option>
-                        <option>Uttar Pradesh - India</option>
-                        <option>Karnataka - India</option>
-                        <option>Bedfordshire - England</option>
-                        <option>Buckinghamshire - England</option>
-                        <option>City of London - England</option>
-                        <option>Staffordshire - England</option>
-                        <option>Abu Dhabi - UAE</option>
-                        <option>Ajman - UAE</option>
-                        <option>Dubai - UAE</option>
-                        <option>Ras al-Khaimah - UAE</option>
-                        <option>Alaska - USA</option>
-                        <option>Maryland - USA</option>
-                        <option>Hawaii - USA</option>
-                        <option>New York - USA</option>
-                        <option>Queensland - Australia</option>
-                        <option>Tasmania - Australia</option>
-                        <option>New South Wales - Australia</option>
-                        <option>Victoria - Australia</option>
-                        <option>Fujian - China</option>
-                        <option>Hainan - China</option>
-                        <option>Shaanxi - China</option>
-                        <option>Yunnan - China</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please provide a valid state.
-                    </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Country"><b>Country</b></label>
-                    <select asp-for="Country" class="custom-select d-block w-100" id="country" required>
-                        <option value="">Choose...</option>
-                        <option>India</option>
-                        <option>USA</option>
-                        <option>UAE</option>
-                        <option>Australia</option>
-                        <option>England</option>
-                        <option>China</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid country.
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label asp-for="ZipCode"><b>Zip Code</b></label>
-                    <input type="text" asp-for="ZipCode" class="form-control" placeholder="Enter Zip Code">
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label asp-for="Contact"><b>Contact</b></label>
-                    <input type="text" asp-for="Contact" class="form-control" placeholder="Enter Contact">
-                </div>
-            </div>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-
-
-
-    </form>
-    
-
+    </div>
+</div>
+<!-- //register -->
